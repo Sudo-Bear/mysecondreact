@@ -2,49 +2,35 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Car from './App.js';
 
-class Garage extends React.Component {
-  render() {
-    return (
-      <div>
-        <h3>Who lives in my Garage?</h3>
-        <ol>
-          <li><Car color="Purple" wheels='4' brand="Chevy"/></li>
-          <p></p>
-          <li><Car color="Blue" wheels='4' brand="Ford"/></li>
-        </ol>
-      </div>
-    );
-  }
-}
-
-class Header extends React.Component {
+class Container extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {favoritecolor: "red"};
+    this.state = {show: true};
   }
-  componentDidMount() {
-    setTimeout(() => {
-      this.setState({favoritecolor: "yellow"})
-    }, 1000)
-  }
-  getSnapshotBeforeUpdate(prevProps, prevState) {
-    document.getElementById("div1").innerHTML = 
-    "Before the update, the favorite was " + prevState.favoritecolor;
-  }
-  componentDidUpdate() {
-    document.getElementById("div2").innerHTML = 
-    "The updated favorite is " + this.state.favoritecolor;
+  delHeader = () => {
+    this.setState({show: false});
   }
   render() {
+    let myheader;
+    if (this.state.show) {
+      myheader = <Child />;
+    };
     return (
       <div>
-        <h1>My Favorite Color is {this.state.favoritecolor}</h1>
-        <div id="div1"></div>
-        <div id="div2"></div>
+        {myheader}
+        <button type="button" onClick={this.delHeader}>Delete Header</button>
       </div>
-    );
+    )
   }
 }
 
-ReactDOM.render(<Garage />, document.getElementById('root'));
-ReactDOM.render(<Header favcol="Green"/>, document.getElementById('root'));
+class Child extends React.Component {
+  componentWillUnmount() {
+    alert("The component named Header is about to be unmounted");
+  }
+  render() {
+    return (<h1>Hello World!</h1>);
+  }
+}
+
+ReactDOM.render(<Container />, document.getElementById("root"));
