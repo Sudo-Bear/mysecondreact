@@ -2,12 +2,15 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Car from './App.js';
 
-function shoot() {
-  alert("Great Shot!")
+class Football extends React.Component {
+  shoot() {
+    alert("Great Shot!")
+  }
+  render() {
+    return (
+      <button onClick={this.shoot}>Shoot</button>
+    )
+  }
 }
 
-const thing = (
-  <button onClick={shoot}>Shoot</button>
-)
-
-ReactDOM.render(thing, document.getElementById("root"));
+ReactDOM.render(<Football />, document.getElementById("root"));
