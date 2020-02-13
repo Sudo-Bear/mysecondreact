@@ -6,15 +6,17 @@ class Garage extends React.Component {
   render() {
     return (
       <div>
-        <h1>Who lives in my Garage?</h1>
-        <Car color="Purple" wheels='4'/>
+        <h3>Who lives in my Garage?</h3>
+        <ol>
+          <li><Car color="Purple" wheels='4' brand="Chevy"/></li>
+          <p></p>
+          <li><Car color="Blue" wheels='4' brand="Ford"/></li>
+        </ol>
       </div>
     );
   }
 }
 
-const myfirstelement = <h1>Hello React!</h1>
-const mysecondelement = <h1>Hello React... AGAIN!</h1>
+const myelement = <Car brand="Ford" />;
 
-ReactDOM.render(myfirstelement, document.getElementById('root'));
-ReactDOM.render(<Garage />, document.getElementById('root3'));
+ReactDOM.render(<Garage />, document.getElementById('root'));
