@@ -11,7 +11,7 @@ class Car extends React.Component {
     }
   }
   changeColor = () => {
-    this.setState({color: "Blue"})
+    this.setState({color: "Orange"})
   }
   render() {
     return (
@@ -19,13 +19,15 @@ class Car extends React.Component {
         <ul>
           <li>Hi, I am a Car!</li>
           <li>I have {this.state.wheels} wheels</li>
-          <li>I am painted {this.state.color}</li>
           <li>Model: {this.state.brand}</li>
+          <li>
+            I am painted {this.state.color} <button
+            type="button"
+            onClick={this.changeColor}
+            >Make Orange</button>
+          </li>
         </ul>
-        <button 
-        type="button"
-        onClick={this.changeColor}
-        >Make Blue</button>
+
       </div>
     )
   }
