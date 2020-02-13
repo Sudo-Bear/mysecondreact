@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Car from './App.js';
 
 class Football extends React.Component {
-  shoot() {
-    alert("Great Shot!")
+  shoot = () => {
+    alert(this)
+    /*The 'this' keyword refers to the component object*/
   }
   render() {
     return (
