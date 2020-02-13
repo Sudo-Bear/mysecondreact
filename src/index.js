@@ -2,35 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Car from './App.js';
 
-class Container extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {show: true};
-  }
-  delHeader = () => {
-    this.setState({show: false});
-  }
-  render() {
-    let myheader;
-    if (this.state.show) {
-      myheader = <Child />;
-    };
-    return (
-      <div>
-        {myheader}
-        <button type="button" onClick={this.delHeader}>Delete Header</button>
-      </div>
-    )
-  }
+function shoot() {
+  alert("Great Shot!")
 }
 
-class Child extends React.Component {
-  componentWillUnmount() {
-    alert("The component named Header is about to be unmounted");
-  }
-  render() {
-    return (<h1>Hello World!</h1>);
-  }
-}
+const thing = (
+  <button onClick={shoot}>Shoot</button>
+)
 
-ReactDOM.render(<Container />, document.getElementById("root"));
+ReactDOM.render(thing, document.getElementById("root"));
