@@ -1,15 +1,26 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-class Football extends React.Component {
-  shoot = a => {
-    alert(a)
+class MyForm extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {username: ''};
+  }
+  myChangeHandler = (event) => {
+    this.setState({username: event.target.value});
   }
   render() {
     return (
-      <button onClick={this.shoot.bind(this, "Goal!")}>Shoot!</button>
-    )
+      <form>
+        <h1>Hello {this.state.username}</h1>
+        <p>Enter your name:</p>
+        <input
+          type="text"
+          onChange={this.myChangeHandler}
+        />
+      </form>
+    );
   }
 }
 
-ReactDOM.render(<Football />, document.getElementById("root"));
+ReactDOM.render(<MyForm />, document.getElementById("root"));
