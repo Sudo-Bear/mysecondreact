@@ -6,24 +6,25 @@ class MyForm extends React.Component {
     super(props);
     this.state = {
       username: '',
-      age: null}
-    ;
-  }
-  mySubmitHandler = (event) => {
-    event.preventDefault();
-    let age = this.state.age;
-    if (!Number(age)){
-      alert("Your age must be a number")
-    }
+      age: null, 
+      errormessage: ''
+    };
   }
   myChangeHandler = (event) => {
     let nam = event.target.name;
     let val = event.target.value;
+    let err = '';
+    if (nam === "age") {
+      if (val != '' && !Number(val)) {
+        err = <strong>Your age must be a number</strong>;
+      }
+    }
+    this.setState({errormessage: err});
     this.setState({[nam]: val});
   }
   render() {
     return (
-      <form onSubmit={this.mySubmitHandler}>
+      <form>
         <h1>Hello {this.state.username} {this.state.age}</h1>
         <p>Enter your name:</p>
         <input
@@ -37,9 +38,7 @@ class MyForm extends React.Component {
           name='age'
           onChange={this.myChangeHandler}
         />
-        <br/>
-        <br/>
-        <input type='submit' />
+        {this.state.errormessage}
       </form>
     );
   }
