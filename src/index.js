@@ -4,14 +4,15 @@ import ReactDOM from 'react-dom';
 class MyForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {username: ''};
-  }
-  mySubmitHandler = (event) => {
-    event.preventDefault();
-    alert("You are submitting " + this.state.username);
+    this.state = {
+      username: '',
+      age: null}
+    ;
   }
   myChangeHandler = (event) => {
-    this.setState({username: event.target.value});
+    let nam = event.target.name;
+    let val = event.target.value;
+    this.setState({[nam]: val});
   }
   render() {
     return (
@@ -20,10 +21,14 @@ class MyForm extends React.Component {
         <p>Enter your name and submit:</p>
         <input
           type="text"
+          name='username'
           onChange={this.myChangeHandler}
         />
-        <input
-          type='submit'
+        <p>Enter your age:</p>
+        <input 
+          type='text'
+          name='age'
+          onChange={this.myChangeHandler}
         />
       </form>
     );
